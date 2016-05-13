@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RCBeacon.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,20 +12,7 @@ namespace RCBeacon
     {
         public App()
         {
-            // The root page of your application
-            MainPage = new ContentPage
-            {
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            XAlign = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
-                    }
-                }
-            };
+            MainPage = new Login();
         }
 
         protected override void OnStart()
@@ -40,6 +28,11 @@ namespace RCBeacon
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        public void SuccessfulLoginAction()
+        {
+            MainPage = new Login();
         }
     }
 }
