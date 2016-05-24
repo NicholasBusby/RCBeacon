@@ -18,7 +18,7 @@ namespace RCBeacon.Droid.Renderers
 
             var activity = this.Context as Activity;
 
-            var auth = new OAuth2Authenticator("272640903085791", string.Empty,
+            var auth = new OAuth2Authenticator(Resources.GetString(Resource.String.facebook_app_id), string.Empty,
                 new Uri("https://m.facebook.com/dialog/oauth/"),
                 new Uri("http://www.facebook.com/connect/login_success.html"));
 
@@ -31,7 +31,9 @@ namespace RCBeacon.Droid.Renderers
         {
             if (e.IsAuthenticated)
             {
-                (App.Current as App).SuccessfulLoginAction();
+                var currentApp = (App.Current as App);
+                currentApp.FacebookAccount = e.Account;
+                currentApp.SuccessfulLoginAction();
             }
         }
     }
