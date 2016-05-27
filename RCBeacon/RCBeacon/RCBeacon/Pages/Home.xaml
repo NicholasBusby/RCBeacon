@@ -10,5 +10,14 @@
       Clicked="facebookLogoutClicked"
       BorderRadius="20"
       BorderWidth="2"/>
+    <Button
+      Text="Show UserName"
+      x:Name="userNameButton"
+      Clicked="userNameClicked"
+      BorderRadius="20"
+      BorderWidth="2"/>
+    <Label
+      Text="User Name Here"
+      x:Name = "userName"/>
   </StackLayout>
 </ContentPage>
