@@ -19,5 +19,7 @@
     <Label
       Text="User Name Here"
       x:Name = "userName"/>
+    <Image
+      x:Name="userImage"/>
   </StackLayout>
 </ContentPage>

@@ -24,11 +24,16 @@ namespace RCBeacon.Pages
         public void userNameClicked(object sender, EventArgs args)
         {
             var account = (App.Current as App).FacebookAccount;
-            var request = new OAuth2Request("GET", new Uri("https://graph.facebook.com/me"), null, account);
-            var response = request.GetResponseAsync().Result;
-            var responseText = response.GetResponseText();
-            var jsonResponse = JObject.Parse(responseText);
-            userName.Text = jsonResponse.Value<string>("name");
+            var nameRequest = new OAuth2Request("GET", new Uri("https://graph.facebook.com/v2.6/me"), null, account);
+            var nameResponse = nameRequest.GetResponseAsync().Result;
+            var nameResponseText = nameResponse.GetResponseText();
+            var nameJsonResponse = JObject.Parse(nameResponseText);
+
+            var photoRequest = new OAuth2Request("GET", new Uri("https://graph.facebook.com/v2.6/me/picture"), new Dictionary<string, string> { { "height", "500" } }, account);
+            var photoResponse = photoRequest.GetResponseAsync().Result;
+
+            userName.Text = nameJsonResponse.Value<string>("name");
+            userImage.Source = ImageSource.FromUri(photoResponse.ResponseUri);
         }
     }
 }
