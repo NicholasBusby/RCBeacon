@@ -2,21 +2,30 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using System.Threading.Tasks;
+using Xamarin.Auth;
 using Xamarin.Forms;
 
 namespace WebService
 {
     public class WebService : IWebService
     {
-        public string GET(Uri url, Dictionary<string, string> parameters, bool outputJson = true)
+        private Account _account;
+        public WebService(Account account)
         {
-            return makeAPICall("GET", url, parameters, outputJson);
+            _account = account;
         }
 
-        private string makeAPICall(string verb, Uri url, Dictionary<string, string>, bool outputJson = true)
+        public async Task<Response> Get(Uri url, Dictionary<string, string> parameters)
         {
-            var request = new OAuth2Request
+            return await makeAPICall("GET", url, parameters);
+        }
+
+        private async Task<Response> makeAPICall(string verb, Uri url, Dictionary<string, string> parameters)
+        {
+            var request = new OAuth2Request(verb, url, parameters, _account);
+            var response = await request.GetResponseAsync();
+            return response;
         }
     }
 }
