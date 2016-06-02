@@ -198,7 +198,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
-    <AndroidResource Include="Resources\drawable\rcplaygroundlogo.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -213,7 +212,12 @@
     <AndroidResource Include="Resources\values\strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\fb-logo.png" />
+    <AndroidResource Include="..\..\SharedImages\fb_logo.png">
+      <Link>Resources\drawable\fb_logo.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\..\SharedImages\rcplaygroundlogo.png">
+      <Link>Resources\drawable\rcplaygroundlogo.png</Link>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
