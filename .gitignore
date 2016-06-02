@@ -236,3 +236,8 @@ _Pvt_Extensions
 .fake/
 
 .DS_Store
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+Resource.[Dd]esigner.cs
