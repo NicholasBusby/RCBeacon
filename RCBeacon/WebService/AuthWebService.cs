@@ -8,10 +8,10 @@ using Xamarin.Auth;
 
 namespace WebService
 {
-    public class WebService : IWebService
+    public class AuthWebService : IWebService
     {
         private Account _account;
-        public WebService(Account account)
+        public AuthWebService(Account account)
         {
             _account = account;
         }

@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace PersistanceService
 {
-    public class PersistanceService: IPersistanceService
+    public class AkavachePersistanceService: IPersistanceService
     {
-        public PersistanceService(string applicationName)
+        public AkavachePersistanceService(string applicationName)
         {
             BlobCache.ApplicationName = applicationName;
         }

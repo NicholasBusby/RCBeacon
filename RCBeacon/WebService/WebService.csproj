@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="IWebService.cs" />
-    <Compile Include="WebService.cs" />
+    <Compile Include="AuthWebService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
