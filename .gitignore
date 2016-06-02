@@ -234,3 +234,10 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+.DS_Store
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+Resource.[Dd]esigner.cs
