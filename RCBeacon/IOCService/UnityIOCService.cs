@@ -11,14 +11,14 @@ namespace IOCService
 
         public static T Resolve<T>()
         {
-            return Container.Resolve<T>(new ResolverOverride[0]);
+            return UnityIOCService.Container.Resolve<T>(new ResolverOverride[0]);
         }
 
         public static void Initialize(UnityContainer container = null)
         {
-            Container = container ?? new UnityContainer();
+            UnityIOCService.Container = container ?? new UnityContainer();
 
-            Container
+            UnityIOCService.Container
                 .RegisterType<IWebService, AuthWebService>()
                 .RegisterType<IPersistanceService, AkavachePersistanceService>();
         }
