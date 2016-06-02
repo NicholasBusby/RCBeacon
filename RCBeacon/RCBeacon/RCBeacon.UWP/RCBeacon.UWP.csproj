@@ -91,7 +91,8 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
-    <None Include="Assets\rcplaygroundlogo.png" />
+    <Content Include="fb-logo.png" />
+    <Content Include="rcplaygroundlogo.png" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
