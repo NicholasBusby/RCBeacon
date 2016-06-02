@@ -13,7 +13,8 @@
     "Splat": "1.6.2",
     "SQLitePCL.raw_basic": "0.8.6",
     "Xamarin.Auth": "1.3.0",
-    "Xamarin.Forms": "2.2.0.45"
+    "Xamarin.Forms": "2.2.0.45",
+    "XLabs.Forms": "2.2.0-pre02"
   },
   "frameworks": {
     "uap10.0": {}
