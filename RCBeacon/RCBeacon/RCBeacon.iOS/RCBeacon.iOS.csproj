@@ -124,6 +124,8 @@
     <BundleResource Include="Resources\rcplaygroundlogo.png" />
     <BundleResource Include="Resources\fb-logo.png" />
     <BundleResource Include="Resources\fb-logo%402x.png" />
+    <BundleResource Include="Resources\dark_Tire_%402X.png" />
+    <BundleResource Include="Resources\dark_Tire.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Akavache, Version=4.1.2.0, Culture=neutral, processorArchitecture=MSIL">
