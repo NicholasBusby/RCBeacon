@@ -91,7 +91,9 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
-    <None Include="Assets\rcplaygroundlogo.png" />
+    <Content Include="..\..\SharedImages\fb_logo.png">
+      <Link>fb_logo.png</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
@@ -110,6 +112,9 @@
     <None Include="Windows_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="..\..\SharedImages\rcplaygroundlogo.png">
+      <Link>rcplaygroundlogo.png</Link>
+    </Content>
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

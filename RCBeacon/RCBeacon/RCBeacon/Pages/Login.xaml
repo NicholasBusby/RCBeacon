@@ -29,9 +29,9 @@
 			Grid.Row="0" Grid.Column="0" Margin="15" />
 		<Image Source="rcplaygroundlogo.png" HorizontalOptions="CenterAndExpand"
 			Grid.Row="1" Grid.Column="0" />
-    <controls:ImageButton Text="Log in with Facebook" Image="fb-logo" HorizontalOptions="FillAndExpand" x:Name="facebookLoginButton" 
-      TextColor="White" FontSize="20" FontAttributes="Bold" Clicked="facebookLoginClicked" 
+    <controls:ImageButton Text="Log in with Facebook" Image="fb_logo" HorizontalOptions="FillAndExpand" x:Name="facebookLoginButton"
+      TextColor="White" FontSize="20" FontAttributes="Bold" Clicked="facebookLoginClicked" Orientation="ImageToLeft"
       BorderWidth="2" BackgroundColor="#4267B2" Margin="15"
-			Grid.Row="2" Grid.Column="0" />
+			Grid.Row="2" Grid.Column="0"/>
 	</Grid>
 </ContentPage>
