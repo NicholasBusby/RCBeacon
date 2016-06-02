@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RCBeacon.Pages.Home">
+  <StackLayout>
+    <Label Text="Welcome to beacon"/>
+    <Button
+      Text="Log Out Of Facebook"
+      x:Name="facebookLogout"
+      Clicked="facebookLogoutClicked"
+      BorderRadius="20"
+      BorderWidth="2"/>
+    <Button
+      Text="Show UserName"
+      x:Name="userNameButton"
+      Clicked="userNameClicked"
+      BorderRadius="20"
+      BorderWidth="2"/>
+    <Label
+      Text="User Name Here"
+      x:Name = "userName"/>
+    <Image
+      x:Name="userImage"/>
+  </StackLayout>
+</ContentPage>

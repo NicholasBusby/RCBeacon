@@ -1,30 +1,26 @@
-﻿using System;
+﻿using RCBeacon.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Xamarin.Auth;
 using Xamarin.Forms;
 
 namespace RCBeacon
 {
     public class App : Application
     {
+        private Account facebookAccount;
         public App()
         {
-            // The root page of your application
-            MainPage = new ContentPage
+            if (FacebookAccount != null)
             {
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children = {
-                        new Label {
-                            XAlign = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
-                    }
-                }
-            };
+                MainPage = new Home();
+            }
+            else
+            {
+                MainPage = new Login();
+            }
         }
 
         protected override void OnStart()
@@ -40,6 +36,29 @@ namespace RCBeacon
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        public Account FacebookAccount
+        {
+            get
+            {
+                return facebookAccount;
+            }
+            set
+            {
+                facebookAccount = value;
+            }
+        }
+
+        public void LogOutOfFacebook()
+        {
+            FacebookAccount = null;
+            MainPage = new Login();
+        }
+
+        public void SuccessfulLoginAction()
+        {
+            MainPage = new Home();
         }
     }
 }
