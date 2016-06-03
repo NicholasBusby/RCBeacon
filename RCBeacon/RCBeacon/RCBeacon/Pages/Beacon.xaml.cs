@@ -14,11 +14,12 @@ namespace RCBeacon.Pages
         public Beacon()
         {
             var navigationPage = new NavigationPage(new MyBeacon());
-            //navigationPage.Icon = "schedule.png";
+            navigationPage.Icon = "lighthouse_icon.png";
             navigationPage.Title = "My Beacon";
 
-            //Children.Add(new TodayPageCS());
-            //Children.Add(navigationPage);
+            Children.Add(navigationPage);
+            Children.Add(new Search());
+            Children.Add(new Profile());
         }
     }
 }
