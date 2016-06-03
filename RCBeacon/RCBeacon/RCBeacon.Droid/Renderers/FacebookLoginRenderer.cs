@@ -32,7 +32,7 @@ namespace RCBeacon.Droid.Renderers
             if (e.IsAuthenticated)
             {
                 var currentApp = (App.Current as App);
-                currentApp.FacebookAccount = e.Account;
+                currentApp.SetAccount(e.Account);
                 currentApp.SuccessfulLoginAction();
             }
         }

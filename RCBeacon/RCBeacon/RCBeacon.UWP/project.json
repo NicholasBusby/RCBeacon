@@ -5,6 +5,7 @@
     "akavache.sqlite3": "4.1.2",
     "Facebook": "7.0.6",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+    "Newtonsoft.Json": "8.0.3",
     "Rx-Core": "2.2.5",
     "Rx-Interfaces": "2.2.5",
     "Rx-Linq": "2.2.5",

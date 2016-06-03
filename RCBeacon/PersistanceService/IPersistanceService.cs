@@ -11,5 +11,6 @@ namespace PersistanceService
     {
         Task<Unit> InsertToMemory(string key, object value);
         Task<T> GetObject<T>(string key);
+        Task<Unit> RemoveFromMemory(string key);
     }
 }

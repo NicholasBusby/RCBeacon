@@ -10,15 +10,9 @@ namespace WebService
 {
     public class AuthWebService : IWebService
     {
-        private Account _account;
-        public AuthWebService(Account account)
+        public async Task<Response> Get(Account account, Uri url, Dictionary<string, string> parameters)
         {
-            _account = account;
-        }
-
-        public async Task<Response> Get(Uri url, Dictionary<string, string> parameters)
-        {
-            var response = await Observable.FromAsync(() => makeAPICall("GET", url, parameters))
+            var response = await Observable.FromAsync(() => makeAPICall(account, "GET", url, parameters))
                 .Timeout(TimeSpan.FromSeconds(15))
                 .Retry(5)
                 .Catch<Response, Exception>(ex => Observable.Return(new Response(new HttpResponseMessage(HttpStatusCode.BadRequest))));
@@ -26,9 +20,9 @@ namespace WebService
             return response;
         }
 
-        private async Task<Response> makeAPICall(string verb, Uri url, Dictionary<string, string> parameters)
+        private async Task<Response> makeAPICall(Account account, string verb, Uri url, Dictionary<string, string> parameters)
         {
-            var request = new OAuth2Request(verb, url, parameters, _account);
+            var request = new OAuth2Request(verb, url, parameters, account);
             var response = await request.GetResponseAsync();
             return response;
         }

@@ -91,6 +91,9 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
+    <Content Include="..\..\SharedImages\dark_Tire.png">
+      <Link>dark_Tire.png</Link>
+    </Content>
     <Content Include="..\..\SharedImages\fb_logo.png">
       <Link>fb_logo.png</Link>
     </Content>
