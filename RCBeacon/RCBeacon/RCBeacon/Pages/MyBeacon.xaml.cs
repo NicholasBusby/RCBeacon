@@ -6,9 +6,9 @@ using Xamarin.Forms;
 
 namespace RCBeacon.Pages
 {
-    public partial class Home : ContentPage
+    public partial class MyBeacon : ContentPage
     {
-        public Home()
+        public MyBeacon()
         {
             InitializeComponent();
         }
