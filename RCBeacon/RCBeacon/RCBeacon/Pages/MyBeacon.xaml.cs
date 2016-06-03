@@ -14,6 +14,7 @@ namespace RCBeacon.Pages
         public MyBeacon()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         public void facebookLogoutClicked(object sender, EventArgs args)
