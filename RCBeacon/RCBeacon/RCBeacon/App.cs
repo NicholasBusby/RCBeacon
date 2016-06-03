@@ -53,11 +53,11 @@ namespace RCBeacon
         {
             get
             {
-                return persistance.GetObject<Account>(accountKey).Result;
+                return persistance?.GetObject<Account>(accountKey).Result;
             }
             set
             {
-                persistance.InsertToMemory(accountKey, value);
+                persistance?.InsertToMemory(accountKey, value);
             }
         }
 
