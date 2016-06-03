@@ -35,7 +35,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
     <Debugger>Xamarin</Debugger>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
@@ -184,7 +183,6 @@
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderers\FacebookLoginRenderer.cs" />
-    <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +212,9 @@
   <ItemGroup>
     <AndroidResource Include="..\..\SharedImages\fb_logo.png">
       <Link>Resources\drawable\fb_logo.png</Link>
+    </AndroidResource>
+    <AndroidResource Include="..\..\SharedImages\dark_Tire.png">
+      <Link>Resources\drawable\dark_Tire.png</Link>
     </AndroidResource>
     <AndroidResource Include="..\..\SharedImages\rcplaygroundlogo.png">
       <Link>Resources\drawable\rcplaygroundlogo.png</Link>
