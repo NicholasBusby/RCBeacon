@@ -2,6 +2,7 @@
 using IOCService;
 using PersistanceService;
 using RCBeacon.Pages;
+using System.Threading.Tasks;
 using WebService;
 using Xamarin.Auth;
 using Xamarin.Forms;
@@ -16,19 +17,22 @@ namespace RCBeacon
         private const string accountKey = "facebookAccount";
         public App()
         {
-            if (FacebookAccount != null)
+            MainPage = new Page();
+            Task.Run(() => {
+                SetThingsUp();
+                });
+        }
+
+        private void authNavigation()
+        {
+            if (GetAccount().Result != null)
             {
-                MainPage = new Beacon();
+                Device.BeginInvokeOnMainThread(() => MainPage = new Beacon());
             }
             else
             {
-                MainPage = new Login();
+                Device.BeginInvokeOnMainThread(() => MainPage = new Login());
             }
-        }
-
-        protected override void OnStart()
-        {
-            SetThingsUp();
         }
 
         private void SetThingsUp()
@@ -37,11 +41,13 @@ namespace RCBeacon
             BlobCache.ApplicationName = "RCBeacon";
             webService = UnityIOCService.Resolve<IWebService>();
             persistance = UnityIOCService.Resolve<IPersistanceService>();
+            SetAccount(null);
+            authNavigation();
         }
 
         protected override void OnSleep()
         {
-            // Handle when your app sleeps
+            BlobCache.Shutdown().Wait();
         }
 
         protected override void OnResume()
@@ -49,27 +55,29 @@ namespace RCBeacon
             // Handle when your app resumes
         }
 
-        public Account FacebookAccount
+        public async Task<Account> GetAccount()
         {
-            get
-            {
-                return persistance?.GetObject<Account>(accountKey).Result;
-            }
-            set
-            {
-                persistance?.InsertToMemory(accountKey, value);
-            }
+            var account = await persistance?.GetObject<Account>(accountKey);
+            return account;
+        }
+
+        public async void SetAccount(Account account)
+        {
+            if (account == null)
+                await persistance?.RemoveFromMemory(accountKey);
+            else
+                await persistance?.InsertToMemory(accountKey, account);
         }
 
         public void LogOutOfFacebook()
         {
-            FacebookAccount = null;
-            MainPage = new Login();
+            SetAccount(null);
+            authNavigation();
         }
 
         public void SuccessfulLoginAction()
         {
-            MainPage = new Beacon();
+            authNavigation();
         }
     }
 }
