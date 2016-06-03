@@ -41,7 +41,6 @@ namespace RCBeacon
             BlobCache.ApplicationName = "RCBeacon";
             webService = UnityIOCService.Resolve<IWebService>();
             persistance = UnityIOCService.Resolve<IPersistanceService>();
-            
             authNavigation();
         }
 
@@ -71,13 +70,15 @@ namespace RCBeacon
 
         public void LogOutOfFacebook()
         {
-            SetAccount(null);
-            authNavigation();
+            Task.Run(() => {
+                SetAccount(null);
+                authNavigation();
+                });
         }
 
         public void SuccessfulLoginAction()
         {
-            authNavigation();
+            Task.Run(() => authNavigation());
         }
     }
 }
