@@ -14,7 +14,7 @@ namespace RCBeacon
         {
             if (FacebookAccount != null)
             {
-                MainPage = new Home();
+                MainPage = new Beacon();
             }
             else
             {
@@ -66,7 +66,7 @@ namespace RCBeacon
 
         public void SuccessfulLoginAction()
         {
-            MainPage = new Home();
+            MainPage = new Beacon();
         }
     }
 }

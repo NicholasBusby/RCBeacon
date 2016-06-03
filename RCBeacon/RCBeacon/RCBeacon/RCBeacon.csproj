@@ -38,13 +38,16 @@
     <Compile Include="AkavacheSqliteLinkerOverride.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Pages\FacebookLogin.cs" />
-    <Compile Include="Pages\Home.xaml.cs">
-      <DependentUpon>Home.xaml</DependentUpon>
+    <Compile Include="Pages\Beacon.xaml.cs">
+      <DependentUpon>Beacon.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pages\MyBeacon.xaml.cs">
+      <DependentUpon>MyBeacon.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -141,9 +144,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\MyBeacon.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Home.xaml">
+    <EmbeddedResource Include="Pages\Beacon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
