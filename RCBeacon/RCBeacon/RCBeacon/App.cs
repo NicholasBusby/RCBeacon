@@ -1,6 +1,8 @@
-﻿using IOCService;
+﻿using Akavache;
+using IOCService;
 using PersistanceService;
 using RCBeacon.Pages;
+using WebService;
 using Xamarin.Auth;
 using Xamarin.Forms;
 
@@ -8,8 +10,10 @@ namespace RCBeacon
 {
     public class App : Application
     {
-        private Account facebookAccount;
+        public IWebService webService;
+        public IPersistanceService persistance;
         private const string applicationName = "RCBeacon";
+        private const string accountKey = "facebookAccount";
         public App()
         {
             if (FacebookAccount != null)
@@ -30,8 +34,9 @@ namespace RCBeacon
         private void SetThingsUp()
         {
             UnityIOCService.Initialize();
-            Akavache.BlobCache.ApplicationName = "RCBeacon";
-            var service = UnityIOCService.Resolve<IPersistanceService>();
+            BlobCache.ApplicationName = "RCBeacon";
+            webService = UnityIOCService.Resolve<IWebService>();
+            persistance = UnityIOCService.Resolve<IPersistanceService>();
         }
 
         protected override void OnSleep()
@@ -48,15 +53,13 @@ namespace RCBeacon
         {
             get
             {
-                return facebookAccount;
+                return persistance.GetObject<Account>(accountKey).Result;
             }
             set
             {
-                facebookAccount = value;
+                persistance.InsertToMemory(accountKey, value);
             }
         }
-
-        public object BlobCache { get; private set; }
 
         public void LogOutOfFacebook()
         {

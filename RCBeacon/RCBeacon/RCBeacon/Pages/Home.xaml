@@ -11,7 +11,7 @@
       BorderRadius="20"
       BorderWidth="2"/>
     <Button
-      Text="Show UserName"
+      Text="Show User Name"
       x:Name="userNameButton"
       Clicked="userNameClicked"
       BorderRadius="20"
