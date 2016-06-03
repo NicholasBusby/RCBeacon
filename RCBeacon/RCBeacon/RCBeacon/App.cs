@@ -41,7 +41,7 @@ namespace RCBeacon
             BlobCache.ApplicationName = "RCBeacon";
             webService = UnityIOCService.Resolve<IWebService>();
             persistance = UnityIOCService.Resolve<IPersistanceService>();
-            SetAccount(null);
+            
             authNavigation();
         }
 

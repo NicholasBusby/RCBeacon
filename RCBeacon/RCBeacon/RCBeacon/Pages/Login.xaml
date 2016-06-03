@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-		x:Class="RCBeacon.Pages.Login" xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" BackgroundImage="dark_Tire">
+		x:Class="RCBeacon.Pages.Login" xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" BackgroundImage="dark_Tire.png">
 	<ContentPage.Padding>
 		<OnPlatform x:TypeArguments="Thickness">
 			<OnPlatform.iOS>
@@ -29,7 +29,7 @@
 			Grid.Row="0" Grid.Column="0" Margin="15" />
 		<Image Source="rcplaygroundlogo.png" HorizontalOptions="CenterAndExpand"
 			Grid.Row="1" Grid.Column="0" />
-    <controls:ImageButton Text="Log in with Facebook" Source="fb_logo" HorizontalOptions="FillAndExpand" x:Name="facebookLoginButton"
+    <controls:ImageButton Text="Log in with Facebook" Source="fb_logo.png" HorizontalOptions="FillAndExpand" x:Name="facebookLoginButton"
       TextColor="White" FontSize="20" FontAttributes="Bold" Clicked="facebookLoginClicked" Orientation="ImageToLeft"
       BorderWidth="2" BackgroundColor="#4267B2" Margin="15"  MinimumHeightRequest="50"
 			Grid.Row="2" Grid.Column="0"/>
