@@ -69,7 +69,7 @@ namespace RCBeacon.UWP.Renderers
 
 
             var currentApp = (RCBeacon.App.Current as RCBeacon.App);
-            currentApp.FacebookAccount = fbAccount;
+            currentApp.SetAccount(fbAccount);
             currentApp.SuccessfulLoginAction();
         }
     }

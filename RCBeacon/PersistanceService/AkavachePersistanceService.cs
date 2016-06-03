@@ -16,9 +16,10 @@ namespace PersistanceService
 
         public async Task<T> GetObject<T>(string key)
         {
-            var savedObject = await BlobCache.UserAccount.GetObject<T>(key)
+            var response = await BlobCache.UserAccount.GetObject<T>(key)
                 .Catch(Observable.Return(default(T)));
-            return savedObject;
+
+            return response;
         }
 
         public async Task<Unit> RemoveFromMemory(string key)

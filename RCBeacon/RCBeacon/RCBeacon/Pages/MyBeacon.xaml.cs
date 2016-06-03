@@ -25,7 +25,7 @@ namespace RCBeacon.Pages
 
         private async void GetUserNameAndImage()
         {
-            var account = (App.Current as App).FacebookAccount;
+            var account = await (App.Current as App).GetAccount();
 
             var nameResponse = await (App.Current as App).webService.Get(account, new Uri("https://graph.facebook.com/v2.6/me"), null);
             var nameResponseText = nameResponse.GetResponseText();
