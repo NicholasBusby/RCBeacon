@@ -12,7 +12,10 @@ namespace RCBeacon.Pages
 
         public void facebookLoginClicked(object sender, EventArgs args)
         {
-            App.Current.MainPage = new FacebookLogin();
+            if(App.Authenticator != null)
+            {
+                App.Authenticator.Authenticate();
+            }
         }
     }
 }

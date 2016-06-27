@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Net.Http;
@@ -18,6 +19,14 @@ namespace WebService
                 .Catch<Response, Exception>(ex => Observable.Return(new Response(new HttpResponseMessage(HttpStatusCode.BadRequest))));
 
             return response;
+        }
+
+        public async Task<JObject> Post(Uri url, JObject body)
+        {
+            var client = new HttpClient();
+            var response = await client.PostAsync(url, new StringContent(body.ToString(Newtonsoft.Json.Formatting.None)));
+            var j = JObject.Parse(await response.Content.ReadAsStringAsync());
+            return j;
         }
 
         private async Task<Response> makeAPICall(Account account, string verb, Uri url, Dictionary<string, string> parameters)

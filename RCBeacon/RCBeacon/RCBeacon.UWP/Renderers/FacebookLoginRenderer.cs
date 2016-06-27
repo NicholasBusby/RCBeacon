@@ -11,6 +11,10 @@ using Xamarin.Auth;
 using Windows.Security.Authentication.Web;
 using Windows.UI.Xaml;
 using Facebook;
+using Newtonsoft.Json.Linq;
+using Microsoft.WindowsAzure.MobileServices;
+using System.Net.Http;
+using System.Threading;
 
 [assembly: ExportRenderer(typeof(FacebookLogin), typeof(FacebookLoginRenderer))]
 
@@ -20,28 +24,12 @@ namespace RCBeacon.UWP.Renderers
     {
         protected override void OnElementChanged(ElementChangedEventArgs<Page> e)
         {
-            loginToFacebook();
+            RCBeacon.App.client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+            //loginToFacebook();
         }
 
-        private async void loginToFacebook()
-        {
-            var fb = new FacebookClient();
-            var redirectURI = "http://www.facebook.com/connect/login_success.html";
-
-            var loginURI = fb.GetLoginUrl(new
-            {
-                client_id = "272640903085791",
-                redirect_uri = redirectURI,
-                scope = string.Empty,
-                display = "popup",
-                response_type = "token"
-            });
-
-            var callbackUri = new Uri(redirectURI, UriKind.Absolute);
-
-            var authenticationResult = await WebAuthenticationBroker.AuthenticateAsync(WebAuthenticationOptions.None, loginURI, callbackUri);
-            var result = ParseAuthenticationResult(fb, authenticationResult);
-        }
+        //private async void loginToFacebook()
+        //}
 
         private string ParseAuthenticationResult(FacebookClient fb, WebAuthenticationResult result)
         {
@@ -59,15 +47,16 @@ namespace RCBeacon.UWP.Renderers
             return null;
         }
 
-        private void AuthSuccess(FacebookOAuthResult facebookResult)
+        private async void AuthSuccess(FacebookOAuthResult facebookResult)
         {
             var accessToken = facebookResult.AccessToken;
             var fbAccount = new Account();
+
             fbAccount.Properties.Add("state", facebookResult.State);
             fbAccount.Properties.Add("access_token", facebookResult.AccessToken);
             fbAccount.Properties.Add("expires_in", ((int)(facebookResult.Expires - DateTime.Now).TotalSeconds).ToString());
 
-
+            
             var currentApp = (RCBeacon.App.Current as RCBeacon.App);
             currentApp.SetAccount(fbAccount);
             currentApp.SuccessfulLoginAction();

@@ -34,6 +34,8 @@ namespace RCBeacon.Pages
             
             var photoResponse = await (App.Current as App).webService.Get(account, new Uri("https://graph.facebook.com/v2.6/me/picture"), new Dictionary<string, string> { { "height", "500" } });
 
+            var resp = await (App.Current as App).webService.Post(new Uri("https://microsoft-apiappea18178105be4e03a42316ee566c0e5e.azurewebsites.net/.auth/login/facebook"), JObject.Parse($"{{\"access_token\": \"{account.Properties["access_token"]}\" }}"));
+
             userName.Text = nameJsonResponse.Value<string>("name");
             userImage.Source = ImageSource.FromUri(photoResponse.ResponseUri);
         }
