@@ -2,7 +2,6 @@
 using Microsoft.Practices.Unity;
 using PersistanceService;
 using WebService;
-using Xamarin.Auth;
 
 namespace IOCService
 {

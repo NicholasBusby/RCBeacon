@@ -16,28 +16,28 @@ namespace RCBeacon.iOS.Renderers
 		{
 			base.ViewDidAppear (animated);
 
-			if (!IsShown) {
+			//if (!IsShown) {
 
-				IsShown = true;
+			//	IsShown = true;
 
-				var auth = new OAuth2Authenticator("272640903085791", string.Empty,
-					new Uri("https://m.facebook.com/dialog/oauth/"),
-					new Uri("http://www.facebook.com/connect/login_success.html"));
+			//	var auth = new OAuth2Authenticator("272640903085791", string.Empty,
+			//		new Uri("https://m.facebook.com/dialog/oauth/"),
+			//		new Uri("http://www.facebook.com/connect/login_success.html"));
 
-				auth.Completed += Auth_Completed;
+			//	auth.Completed += Auth_Completed;
 
-				PresentViewController (auth.GetUI(), true, null);
-			}
+			//	PresentViewController (auth.GetUI(), true, null);
+			//}
 		}
 
-		private void Auth_Completed(object sender, AuthenticatorCompletedEventArgs e)
-		{
-			if (e.IsAuthenticated)
-			{
-				var currentApp = (App.Current as App);
-				currentApp.SetAccount(e.Account);
-				currentApp.SuccessfulLoginAction();
-			}
-		}
+		//private void Auth_Completed(object sender, AuthenticatorCompletedEventArgs e)
+		//{
+		//	if (e.IsAuthenticated)
+		//	{
+		//		var currentApp = (App.Current as App);
+		//		//currentApp.SetAccount(e.Account);
+		//		//currentApp.SuccessfulLoginAction();
+		//	}
+		//}
 	}
 }

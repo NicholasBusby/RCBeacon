@@ -5,16 +5,27 @@ namespace RCBeacon.Pages
 {
     public partial class Login : ContentPage
     {
+        bool authenticated = false;
         public Login()
         {
             InitializeComponent();
         }
 
-        public void facebookLoginClicked(object sender, EventArgs args)
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (authenticated)
+            {
+                //logged in
+            }
+        }
+
+        public async void facebookLoginClicked(object sender, EventArgs args)
         {
             if(App.Authenticator != null)
             {
-                App.Authenticator.Authenticate();
+                authenticated = await App.Authenticator.Authenticate();
             }
         }
     }

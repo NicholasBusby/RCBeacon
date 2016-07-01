@@ -1,7 +1,9 @@
 ﻿using Microsoft.WindowsAzure.MobileServices;
+using Newtonsoft.Json.Linq;
 using RCBeacon.SharedInterfaces;
 using System;
 using System.Threading.Tasks;
+using Windows.UI.Popups;
 
 namespace RCBeacon.UWP
 {
@@ -18,26 +20,28 @@ namespace RCBeacon.UWP
 
         public async Task<bool> Authenticate()
         {
+            string message = string.Empty;
             var success = false;
+
             try
             {
                 if(user == null)
                 {
-                    user = await RCBeacon.App.client.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+                    user = await BeaconItemManager.DefaultManager.CurrentClient.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
                     if (user != null)
                     {
-                        var messageDialog = new Windows.UI.Popups.MessageDialog(
-                        string.Format("you are now logged in - {0}", user.UserId), "Authentication");
-                        messageDialog.ShowAsync();
+                        success = true;
+                        message = $"You are now signed-in as {user.UserId}.";
                     }
                 }
                 success = true;
             }
             catch(Exception ex)
             {
-                var messageDialog = new Windows.UI.Popups.MessageDialog(ex.Message, "Authentication Failed");
-                messageDialog.ShowAsync();
+                message = $"Authentication Failed: {ex.Message}";
             }
+
+            await new MessageDialog(message, "Sign-in result").ShowAsync();
             return success;
         }
     }
