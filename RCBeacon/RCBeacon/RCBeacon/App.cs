@@ -16,8 +16,8 @@ namespace RCBeacon
         public IPersistanceService persistance;
         private const string accountKey = "facebookAccount";
 
-        //public const string applicationURL = "https://microsoft-apiappea18178105be4e03a42316ee566c0e5e.azurewebsites.net";
-        //public static MobileServiceClient client = new MobileServiceClient(applicationURL);
+        public const string applicationURL = "https://microsoft-apiappea18178105be4e03a42316ee566c0e5e.azurewebsites.net";
+        public static MobileServiceClient client = new MobileServiceClient(applicationURL);
 
         public static IAuthenticate Authenticator { get; private set; }
 
